@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
+  <script src="js/request.js"></script>
+  <script src="js/index.js"></script>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <div>
-  <div></div>
+  <div class="filter" id="filter"></div>
+  <div class="container" id="container"></div>
 </div>
 </body>
 <script>
-    const BASE_URL = ''
-    fetch(`${BASE_URL}/api/home/image/list`).then(res => console.log(res.json()))
+    start()
 </script>
 </html>

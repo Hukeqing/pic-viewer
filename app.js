@@ -18,10 +18,6 @@ app.use(session({
     cookie: {path: '/', httpOnly: true, secure: false, maxAge: null}
 }));
 
-const project = require('./manager/project')
-
-// project.finish.then(() => console.log(project.getFileList(null)))
-
 const userRouter = require('./routes/users')
 const homeRouter = require('./routes/home')
 const pictureRouter = require('./routes/file')

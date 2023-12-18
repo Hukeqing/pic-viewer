@@ -1,12 +1,13 @@
 const express = require("express")
 
 const pictureManager = require('../manager/picture')
+const {Result} = require('../common/result')
 
 const router = express.Router()
 
 router.get("/:id/info", (req, res) => {
     pictureManager.getPicture(req.params.id).then(picture => {
-        res.send(picture.metadata)
+        res.send(Result.ofOk(picture.metadata))
     })
 })
 

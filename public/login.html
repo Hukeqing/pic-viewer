@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+  <script src="js/request.js"></script>
+  <script src="js/login.js"></script>
 </head>
 <body>
+<div style="display: grid; place-content: center; position: absolute; width: 100vw; height: 100vh; top: 0; left: 0">
+  <label>
+    Token:
+    <input type="password" id="token"/>
+    <button onclick="login()">登陆</button>
+  </label>
+</div>
 </body>
 </html>
