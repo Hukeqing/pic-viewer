@@ -23,7 +23,7 @@ const deal = async (res) => {
      */
     const body = await result.json()
     if (body.code) {
-        throw body.msg
+        throw {msg: body.msg, code: body.code}
     } else {
         return body.data
     }

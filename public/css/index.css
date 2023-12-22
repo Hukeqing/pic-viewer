@@ -8,10 +8,7 @@ body {
 
 .container {
     display: grid;
-    width: 98vw;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 2vw;
-    padding: 1vw;
 }
 
 .flow {
