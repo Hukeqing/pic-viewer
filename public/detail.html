@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/request.js"></script>
+  <script src="js/detail.js"></script>
+</head>
+<body>
+<div class="detail-container">
+  <img src="" style="max-width: 100%; max-height: 100vh" loading="lazy" alt="main" id="img"/>
+  <div class="detail-info-container">
+    <div></div>
+    <div class="detail-info">
+      <div>ID:</div>
+      <div id="info-id"></div>
+      <div>名称:</div>
+      <div id="info-name"></div>
+      <div>磁盘占用:</div>
+      <div id="info-size"></div>
+      <div>标签:</div>
+      <div id="info-tags"></div>
+      <div>归属文件夹:</div>
+      <div id="info-folders"></div>
+      <div>来源网址:</div>
+      <a target="_blank" id="info-url"></a>
+      <div>大小:</div>
+      <div id="info-shape"></div>
+      <div>主要颜色:</div>
+      <div style="display: grid; grid-template-columns: repeat(10, 1fr); place-items: center">
+        <div class="palette" id="palette-0"></div>
+        <div class="palette" id="palette-1"></div>
+        <div class="palette" id="palette-2"></div>
+        <div class="palette" id="palette-3"></div>
+        <div class="palette" id="palette-4"></div>
+        <div class="palette" id="palette-5"></div>
+        <div class="palette" id="palette-6"></div>
+        <div class="palette" id="palette-7"></div>
+        <div class="palette" id="palette-8"></div>
+        <div class="palette" id="palette-9"></div>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</div>
+</body>
+<script>
+    start()
+</script>
+</html>

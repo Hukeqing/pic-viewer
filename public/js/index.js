@@ -55,6 +55,7 @@ const add = (code) => {
     child.src = `${BASE_URL}/api/image/${code}/thumbnail`
     child.className = 'thumbnail'
     child.loading = 'lazy'
+    child.onclick = () => window.open(`${BASE_URL}/detail.html?code=${code}`, '_blank')
     ++onload
     get(`/api/image/${code}/info`, {}).then(res => {
         // noinspection JSUnresolvedReference
@@ -105,7 +106,7 @@ const start = () => {
         document.body.onscroll = scroll
     }).catch(res => {
         if (res.code === 1) {
-            window.location.href = '/login.html'
+            window.location.href = `${BASE_URL}/login.html`
         }
     })
 }
