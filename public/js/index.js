@@ -23,7 +23,7 @@ let trigger = null
  */
 let imageIdList = null
 
-let curStart = 0, curEnd = 100, onload = 0
+let curStart = 0, curEnd = 0, onload = 0, loadOnce = 20
 
 const resize = () => {
     const width = window.innerWidth
@@ -57,7 +57,7 @@ const add = (code) => {
     child.loading = 'lazy'
     child.onclick = () => window.open(`${BASE_URL}/detail.html?code=${code}`, '_blank')
     ++onload
-    get(`/api/image/${code}/info`, {}).then(res => {
+    Service.info(code, () => --onload, res => {
         // noinspection JSUnresolvedReference
         const cost = res.height / res.width
         let index = 0
@@ -65,9 +65,6 @@ const add = (code) => {
             if (columnLength[i] < columnLength[index]) index = i
         column[index].appendChild(child)
         columnLength[index] += cost
-        --onload
-    }).catch(() => {
-        --onload
     })
 }
 
@@ -87,7 +84,7 @@ const scroll = () => {
     if (onload) return
     if (isInViewPortOfTwo(trigger)) {
         curStart = curEnd
-        curEnd = Math.min(imageIdList.length, curEnd + 100)
+        curEnd = Math.min(imageIdList.length, curEnd + loadOnce)
         loadMore()
         console.log('start', curStart, 'end', curEnd)
     }
@@ -97,14 +94,14 @@ const start = () => {
     container = document.getElementById("container")
     trigger = document.getElementById("trigger")
     resize()
-    get('/api/home/image/list', {}).then(res => {
+    Service.list(null, res => {
         // noinspection JSValidateTypes
         imageIdList = res
         curStart = 0
-        curEnd = Math.min(imageIdList.length, 100)
+        curEnd = Math.min(imageIdList.length, loadOnce)
         loadMore()
         document.body.onscroll = scroll
-    }).catch(res => {
+    }, res => {
         if (res.code === 1) {
             window.location.href = `${BASE_URL}/login.html`
         }

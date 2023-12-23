@@ -31,8 +31,7 @@ const start = () => {
         }
     }
 
-    get(`/api/image/${code}/info`, {}).then(res => {
-        // noinspection JSValidateTypes
+    Service.info(code, null, res => {
         metadata = res
         document.getElementById("info-id").innerText = metadata.id
         document.getElementById("info-name").innerText = metadata.name
@@ -47,7 +46,7 @@ const start = () => {
             document.getElementById(`palette-${i}`).style.backgroundColor =
                 `rgb(${palette.color[0]}, ${palette.color[1]}, ${palette.color[2]})`
         }
-    }).catch(res => {
+    }, res => {
         alert(res.msg)
     })
 

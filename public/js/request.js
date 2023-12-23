@@ -15,7 +15,7 @@ const HEADER = {"Content-Type": "application/json"}
 const deal = async (res) => {
     const result = await res
     if (result.status !== 200) {
-        throw `network error, code: ${result.status}`
+        throw {code: -1, msg: `network error, code: ${result.status}`}
     }
 
     /**

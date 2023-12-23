@@ -4,6 +4,7 @@ class Config {
         this._home = process.env.PIC_HOME ?? undefined
         this._sessionSecret = process.env.SESSION_SECRET ?? Math.random().toString()
         this._baseUrl = process.env.BASE_URL ?? ''
+        this._debug = process.env.DEBUG ?? false
     }
 
     get token() {
@@ -20,6 +21,10 @@ class Config {
 
     get baseUrl() {
         return this._baseUrl;
+    }
+
+    get debug() {
+        return !!this._debug
     }
 }
 
