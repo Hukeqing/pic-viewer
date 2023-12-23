@@ -94,16 +94,26 @@ const start = () => {
     container = document.getElementById("container")
     trigger = document.getElementById("trigger")
     resize()
-    Service.list(null, res => {
-        // noinspection JSValidateTypes
-        imageIdList = res
-        curStart = 0
-        curEnd = Math.min(imageIdList.length, loadOnce)
-        loadMore()
-        document.body.onscroll = scroll
-    }, res => {
-        if (res.code === 1) {
-            window.location.href = `${BASE_URL}/login.html`
-        }
+
+    Service.check(() => {
+        Service.list(null, res => {
+            // noinspection JSValidateTypes
+            imageIdList = res
+            curStart = 0
+            curEnd = Math.min(imageIdList.length, loadOnce)
+            loadMore()
+            document.body.onscroll = scroll
+        }, res => {
+            if (res.code === 1) {
+                window.location.href = `${BASE_URL}/login.html`
+            }
+        })
+    }, () => {
+        window.location.href = `${BASE_URL}/login.html`
     })
+
+}
+
+const clearCache = () => {
+    window.localStorage.clear()
 }

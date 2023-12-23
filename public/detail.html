@@ -11,23 +11,23 @@
 <body>
 <div class="detail-container">
   <img src="" style="max-width: 100%; max-height: 100vh" loading="lazy" alt="main" id="img"/>
-  <div class="detail-info-container">
+  <div class="detail-info-container" id="detail-info-container">
     <div></div>
     <div class="detail-info">
       <div>ID:</div>
       <div id="info-id"></div>
       <div>名称:</div>
       <div id="info-name"></div>
-      <div>磁盘占用:</div>
-      <div id="info-size"></div>
-      <div>标签:</div>
-      <div id="info-tags"></div>
-      <div>归属文件夹:</div>
-      <div id="info-folders"></div>
-      <div>来源网址:</div>
-      <a target="_blank" id="info-url"></a>
       <div>大小:</div>
       <div id="info-shape"></div>
+      <div>磁盘占用:</div>
+      <div id="info-size"></div>
+      <div>归属文件夹:</div>
+      <div id="info-folders"></div>
+      <div>标签:</div>
+      <div id="info-tags" style="cursor: pointer"></div>
+      <div>来源网址:</div>
+      <a target="_blank" id="info-url"></a>
       <div>主要颜色:</div>
       <div style="display: grid; grid-template-columns: repeat(10, 1fr); place-items: center">
         <div class="palette" id="palette-0"></div>
@@ -43,6 +43,17 @@
       </div>
     </div>
     <div></div>
+  </div>
+</div>
+<div style="position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; display: none;"
+     id="detail-tag-edit-container">
+  <div style="background-color: gray; opacity: 50%; position: fixed; width: 100vw; height: 100vh; z-index: -999"></div>
+  <div id="detail-tag-edit-box" style="margin: 20vh 20vw 5vh 20vw;">
+  </div>
+  <div style="margin: 5vh 20vw 20vw;">
+    <div class="detail-tag" style="background-color: red" onclick="newTag()">ADD NEW TAG</div>
+    <div class="detail-tag" style="background-color: red">SAVE TAG</div>
+    <div class="detail-tag" style="background-color: red" onclick="tagEditDialog(false)">CLOSE DIALOG</div>
   </div>
 </div>
 </body>

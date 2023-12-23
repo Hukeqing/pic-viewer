@@ -21,6 +21,14 @@ router.post('/logout', (req, res) => {
     res.send(Result.ok())
 })
 
+router.get('/check', (req, res) => {
+    if (req?.session?.user?.role === 'admin') {
+        res.send(Result.ok())
+    } else {
+        res.send(Error.NEED_LOGIN.asResult())
+    }
+})
+
 const filterAdmin = (req, res, next) => {
     if (req?.session?.user?.role === 'admin') {
         next()
